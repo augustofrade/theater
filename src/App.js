@@ -16,7 +16,7 @@ function App() {
 	return (
 		<Router>
 			<Nav />
-			<div className="container" style={{marginTop: 100, marginBottom: 100}}>
+			<div className="container" style={{marginTop: 100, marginBottom: 100, minHeight: "80vh"}}>
 				<Switch>
 					<Route exact path="/">
 						<Home />

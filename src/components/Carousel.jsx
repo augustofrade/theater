@@ -1,30 +1,49 @@
 import React from "react";
-import { Carousel } from 'antd';
+import { ReactComponent as HomeBanner } from "../svg/home-banner.svg";
 
-export default function Carousel() {
-	
-	const contentStyle = {
-	  height: '160px',
-	  color: '#fff',
-	  lineHeight: '160px',
-	  textAlign: 'center',
-	  background: '#364d79',
-	};
+export default function() {
 
 	return (
-		<Carousel autoplay>
-		  <div>
-		    <h3 style={contentStyle}>1</h3>
+		<div id="carouselExampleCaptions" className="carousel slide" data-ride="carousel" style={{background: "#ccc", position: "relative"}} >
+		  <ol className="carousel-indicators">
+		    <li data-target="#carouselExampleCaptions" data-slide-to="0" className="active"></li>
+		    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+		    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+		  </ol>
+		  <div  style={{background: "linear-gradient(to top, rgb(30,31,38, 0.7) 30%, transparent 70%)",
+		  	zIndex: 1, width: "100%", height: "100%", position: "absolute"}}>
 		  </div>
-		  <div>
-		    <h3 style={contentStyle}>2</h3>
+		  <div className="carousel-inner">
+		    <div className="carousel-item active">
+		      <img src={require("../svg/home-banner.svg")} className="d-block w-100" alt="..." />
+		      <div className="carousel-caption d-none d-md-block">
+		        <h5>First slide label</h5>
+		        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+		      </div>
+		    </div>
+		    <div className="carousel-item">
+		      <img src={require("../svg/home-banner.svg")} className="d-block w-100" alt="..." />
+		      <div className="carousel-caption d-none d-md-block">
+		        <h5>Second slide label</h5>
+		        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		      </div>
+		    </div>
+		    <div className="carousel-item">
+		      <img src={require("../svg/home-banner.svg")} className="d-block w-100" alt="..." />
+		      <div className="carousel-caption d-none d-md-block">
+		        <h5>Third slide label</h5>
+		        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+		      </div>
+		    </div>
 		  </div>
-		  <div>
-		    <h3 style={contentStyle}>3</h3>
-		  </div>
-		  <div>
-		    <h3 style={contentStyle}>4</h3>
-		  </div>
-		</Carousel>
+		  <a className="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+		    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+		    <span className="sr-only">Previous</span>
+		  </a>
+		  <a className="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+		    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+		    <span className="sr-only">Next</span>
+		  </a>
+		</div>
 	)
 }

@@ -7,7 +7,7 @@ export default function SignIn() {
 	const [ pwdBorder, setPwdBorder ] = useState("auto");
 
 	function handleForm(e) {
-		if(password == "") {
+		if(password === "") {
 			e.preventDefault();
 			setPwdBorder("#fe4a49");
 		} else
