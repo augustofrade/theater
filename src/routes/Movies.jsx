@@ -1,29 +1,25 @@
 import React, { useState, useEffect } from "react";
-import "./Movies.css";
+import MoviePoster from "../components/MoviePoster";
+import Loading from "../components/Loading";
+import { fetchMovies } from "../api/movieAPI";
 
 export default function Movies() {
-	const [ movieData, setMovieData ] = useState([])
+	const [ movieData, setMovieData ] = useState()
 
 	useEffect(() => {
 		fetchMovies().then(data => setMovieData(data));
 	}, [])
 
-	async function fetchMovies() {
-		let response = await fetch("/data/movies");
-		let data = await response.json();
-		return data;
-	} 
+	
 
 	return (
 		<div>
+			<h2 className="display-4">Available movies</h2>
+			{!movieData && <Loading />}
 			<div className="row row-cols-4" style={{gridGrap: 10}}>
-				{
+				{movieData &&
 					movieData.map(data => (
-						<div className="movie-poster-img">
-						{/* Implement <Link to={id}> */}
-						<img src={`http://image.tmdb.org/t/p/w500${data.poster_path}`} alt={data.id} key={data.id}
-							className="shadow p-3 mb-5 bg-white rounded img-fluid" />
-						</div>
+						<MoviePoster src={data.poster_path} id={data.id} key={data.id} title={data.title} />
 					))
 				}
 			</div>

@@ -8,6 +8,7 @@ import Search from "./routes/Search";
 import InvalidRoute from "./routes/InvalidRoute";
 import SignUp from "./routes/SignUp";
 import SignIn from "./routes/SignIn";
+import MovieInfo from "./routes/MovieInfo"
 import Footer from "./components/Footer";
 
 
@@ -35,6 +36,9 @@ function App() {
 					</Route>
 					<Route exact path="/signin">
 						<SignIn />
+					</Route>
+					<Route path="/movie/:id">
+						<MovieInfo />
 					</Route>
 					<Route path="*">
 						<InvalidRoute />
