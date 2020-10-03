@@ -8,7 +8,7 @@ export default function MoviePoster(props) {
 	title = title.substring(0, 25);
 
 	return (
-		<div className="movie-poster-cntr">
+		<div className={"movie-poster-cntr " + props.animation}>
 		<Link to={"movie/"+props.id}>
 			<div className="movie-poster-title"><span>{title}</span></div>
 			<img src={`http://image.tmdb.org/t/p/w500${props.src}`} alt={props.id}

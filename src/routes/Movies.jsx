@@ -19,7 +19,8 @@ export default function Movies() {
 			<div className="row row-cols-4" style={{gridGrap: 10}}>
 				{movieData &&
 					movieData.map(data => (
-						<MoviePoster src={data.poster_path} id={data.id} key={data.id} title={data.title} />
+						<MoviePoster src={data.poster_path} id={data.id} key={data.id}
+							title={data.title} animation="movie-poster-animated" />
 					))
 				}
 			</div>
