@@ -1,0 +1,33 @@
+.user-tab-group > ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.user-tab-group {
+	text-align: center;
+	border-bottom: solid 1px #b3cde0;
+	padding: 10px 0px;
+	margin-bottom: 40px;
+}
+
+.user-tab > a {
+	color: #000;
+}
+
+.user-tab:hover > a {
+	color: #0392cf;
+}
+
+.user-tab {
+	font-family: Roboto;
+	font-size: 2em;
+	display: inline-block;
+	padding: 0px 10px;
+}
+
+@media (max-width: 430px) {
+	.user-tab {
+		font-size: 1.5em;
+	}
+}

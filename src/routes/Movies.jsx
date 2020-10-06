@@ -7,6 +7,7 @@ export default function Movies() {
 	const [ movieData, setMovieData ] = useState()
 
 	useEffect(() => {
+		window.scrollTo(0, 0);
 		fetchMovies().then(data => setMovieData(data));
 	}, [])
 

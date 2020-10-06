@@ -14,8 +14,11 @@ export async function fetchRandomMovies(amount) {
 	let response = await fetch("/data/movies");
 	let data = await response.json();
 	let random = [];
-	for(let m = 0; m < amount; m++)
-		random.push(data[Math.floor(Math.random() * data.length)])
+	while(random.length !== 5) {
+		let movie = data[Math.floor(Math.random() * data.length)]
+		if(random.indexOf(movie) === -1)
+			random.push(movie)
+	}
 
 	return random
 }

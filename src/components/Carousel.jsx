@@ -1,5 +1,4 @@
 import React from "react";
-import { ReactComponent as HomeBanner } from "../svg/home-banner.svg";
 
 export default function() {
 

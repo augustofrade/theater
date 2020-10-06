@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import Loading from "../components/Loading";
 import MovieSuggestions from "../components/MovieSuggestions";
 import { fetchMovieData, fetchRandomMovies } from "../api/movieAPI";
@@ -8,9 +8,10 @@ import TheatersIcon from '@material-ui/icons/Theaters';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
 export default function MovieInfo() {
-	const [ movieData, setMovieData ] = useState({});
+	const [ movieData, setMovieData ] = useState();
 	const [ recommendedData, setRecommendedData ] = useState();
-	const { id } = useParams();;
+	const { id } = useParams();
+	let location = useLocation();
 
 	function formatMovieRuntime(runtime) {
 		let hours = Math.floor(runtime / 60);
@@ -20,17 +21,19 @@ export default function MovieInfo() {
 	}
 
 	useEffect(() => {
+		window.scrollTo(0, 0);
+		setMovieData();
+		setRecommendedData();
+
 		fetchMovieData(id).then(data => {
 			data.runtime = formatMovieRuntime(data.runtime)
 			setMovieData(data);
 			console.log(data);
 		});
-		window.scrollTo(0, 0);
-
-		fetchRandomMovies(5).then(data => {
+		fetchRandomMovies(5, ).then(data => {
 			setRecommendedData(data);
 		});
-	}, [])
+	}, [location]);
 
 	return (
 		<React.Fragment>
@@ -39,7 +42,7 @@ export default function MovieInfo() {
 				<React.Fragment>
 					<div className="backdrop-cntr">
 						<img src={`https://image.tmdb.org/t/p/original${movieData.backdrop_path}`}
-							loading="lazy" className="img-fluid movie-backdrop" />
+							loading="lazy" className="img-fluid movie-backdrop" alt={movieData.title} />
 						<h2 className="movie-title display-4">{movieData.title}</h2>
 					</div>
 					<div className="card movie-length">
@@ -50,6 +53,7 @@ export default function MovieInfo() {
 					</div>
 					<div className="movie-data">
 						<h3>Synopsis</h3>
+						<hr />
 						<p className="lead" style={{textAlign: "justify"}}>{movieData.overview}</p>
 						<h3>Genres</h3>
 						<div className="row row-cols-2">

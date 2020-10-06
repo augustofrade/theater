@@ -25,6 +25,12 @@ const UserSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
+	payment: {
+		type: Array,
+		default: [
+			{ name: "Default", method: "cash" }
+		]
+	},
 	createdAt: {
 		type: Date,
 		default: Date.now

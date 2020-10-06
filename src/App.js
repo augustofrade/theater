@@ -25,7 +25,7 @@ function App() {
 					<Route exact path="/movies">
 						<Movies />
 					</Route>
-					<Route exact path="/account">
+					<Route path="/account">
 						<Account />
 					</Route>
 					<Route exact path="/search">
